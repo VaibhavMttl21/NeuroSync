@@ -125,21 +125,20 @@ const FilterButton = ({
       onClick={onClick}
       className={`px-4 py-2 rounded-full relative text-sm font-medium ${
         active 
-          ? 'text-white' // White text for contrast when active
-          : 'text-foreground hover:text-primary' // Enhanced with hover text color
+          ? 'text-white' // Changed to always visible white text when active
+          : 'text-foreground hover:text-foreground' // Removed muted-foreground to ensure visibility
       }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      {/* Always render the background for active state, with full opacity */}
-      <motion.span
-        layoutId="filterBackground"
-        className={`absolute inset-0 rounded-full -z-10 ${
-          active ? 'bg-primary opacity-100' : 'opacity-0'
-        }`}
-        initial={false}
-        transition={{ type: "spring", bounce: 0.25 }}
-      />
+      {active && (
+        <motion.span
+          layoutId="filterBackground"
+          className="absolute inset-0 bg-primary rounded-full -z-10"
+          // Removed opacity animations to ensure the background is always visible
+          transition={{ type: "spring", bounce: 0.25 }}
+        />
+      )}
       {children}
     </motion.button>
   );
