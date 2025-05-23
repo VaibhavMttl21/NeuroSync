@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence, useTransform, useScroll } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -11,7 +11,6 @@ const Navbar = () => {
   const location = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
   
-  const { scrollY } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
